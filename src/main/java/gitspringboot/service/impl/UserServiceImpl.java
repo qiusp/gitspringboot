@@ -21,8 +21,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
 
         LambdaQueryWrapper<User> queryWrapper = Wrappers.<User>query().lambda();
         queryWrapper.eq(User::getUserName,username);
-
-        return this.baseMapper.selectOne(queryWrapper).getPassWord();
+//        this.baseMapper.selectOne(queryWrapper).getPassWord()
+        return null;
     }
 
 }
