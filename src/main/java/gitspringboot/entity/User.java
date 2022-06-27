@@ -28,7 +28,7 @@ public class User {
     /**
      * 密码
      */
-    @TableField(value = "password")
-    private String password;
+    @TableField(value = "pass_word")
+    private String passWord;
 
 }

@@ -21,14 +21,20 @@ import java.util.List;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IUserService {
 
     @Override
-    public IPage<User> test() {
+    public IPage<User> test(Page<User> page) {
         LambdaQueryWrapper<User> queryWrapper = Wrappers.<User>query().lambda();
         queryWrapper.eq(User::getUserName,"qsp");
         List<User> userList= this.list();
 
-        Page<User> userPage = new Page<>(1,userList.size(),userList.size(),true);
-        userPage.setRecords(userList);
-        return userPage;
+        page = new Page<>(1,userList.size(),userList.size(),true);
+        page.setRecords(userList);
+        return page;
+    }
+
+    @Override
+    public boolean addUser(User user) {
+        user.setUserName("qsp").setPassWord("789").setId(3L);
+        return baseMapper.insert(user) > 0;
     }
 
 }
