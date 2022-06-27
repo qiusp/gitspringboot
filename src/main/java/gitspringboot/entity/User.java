@@ -9,7 +9,7 @@ import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-@TableName("登录信息")
+@TableName("user")
 public class User {
     private static final long serialVersionUID = 1L;
 
@@ -22,13 +22,13 @@ public class User {
     /**
      * 用户名
      */
-    @TableField(value = "用户名")
+    @TableField(value = "user_name")
     private String userName;
 
     /**
      * 密码
      */
-    @TableField(value = "密码")
-    private String passWord;
+    @TableField(value = "password")
+    private String password;
 
 }
