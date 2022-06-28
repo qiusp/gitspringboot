@@ -1,6 +1,10 @@
 package gitspringboot.config.schedul;
 
 import cn.hutool.core.date.DateUtil;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.scheduling.TaskScheduler;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
@@ -12,7 +16,10 @@ public class TestScadule {
 
     @Scheduled(cron = "*/5 * * * * ?")
     public void pringData(){
-        System.out.println(DateUtil.date() + ":我是秒级定时器");
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(StopTask.class);
+        TaskScheduler taskScheduler = ctx.getBean(TaskScheduler.class);
+        System.out.println(taskScheduler);
+//        System.out.println(DateUtil.date() + ":我是秒级定时器");
     }
 
     /**
