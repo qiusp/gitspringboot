@@ -1,6 +1,6 @@
-package gitspringboot.controller;
+package gitspringboot.modules.controller;
 
-import gitspringboot.entity.TestEntity;
+import gitspringboot.modules.entity.TestEntity;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

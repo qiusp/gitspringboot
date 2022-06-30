@@ -1,4 +1,4 @@
-package gitspringboot.entity;
+package gitspringboot.modules.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

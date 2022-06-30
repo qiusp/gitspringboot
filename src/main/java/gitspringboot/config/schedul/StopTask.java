@@ -21,7 +21,6 @@ public class StopTask extends ThreadPoolTaskScheduler {
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, long period) {
         ScheduledFuture<?> future = super.scheduleAtFixedRate(task, period);
-
         ScheduledMethodRunnable runnable = (ScheduledMethodRunnable) task;
         scheduledTasks.put(runnable.getTarget(), future);
 
@@ -31,7 +30,6 @@ public class StopTask extends ThreadPoolTaskScheduler {
     @Override
     public ScheduledFuture<?> scheduleAtFixedRate(Runnable task, Date startTime, long period) {
         ScheduledFuture<?> future = super.scheduleAtFixedRate(task, startTime, period);
-
         ScheduledMethodRunnable runnable = (ScheduledMethodRunnable) task;
         scheduledTasks.put(runnable.getTarget(), future);
 

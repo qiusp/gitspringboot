@@ -1,4 +1,4 @@
-package gitspringboot.service.impl;
+package gitspringboot.modules.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -8,9 +8,9 @@ import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
-import gitspringboot.entity.User;
-import gitspringboot.mapper.UserMapper;
-import gitspringboot.service.IUserService;
+import gitspringboot.modules.entity.User;
+import gitspringboot.modules.mapper.UserMapper;
+import gitspringboot.modules.service.IUserService;
 
 import java.util.List;
 

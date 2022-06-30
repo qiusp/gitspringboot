@@ -1,14 +1,13 @@
-package gitspringboot.controller;
+package gitspringboot.modules.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import gitspringboot.config.util.R;
-import gitspringboot.entity.User;
-import gitspringboot.service.IUserService;
+import gitspringboot.modules.entity.User;
+import gitspringboot.modules.service.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.List;
 
 @RestController//RestController是做rest服务的，以json方式返回数据。RequestMapping 路径映射配置。
 @RequestMapping("/user")

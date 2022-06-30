@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
-@MapperScan("gitspringboot.mapper*")
+@MapperScan("gitspringboot.modules.mapper*")
 @EnableScheduling
 public class GitspringbootApplication {
 

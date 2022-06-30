@@ -1,7 +1,7 @@
-package gitspringboot.mapper;
+package gitspringboot.modules.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import gitspringboot.entity.User;
+import gitspringboot.modules.entity.User;
 
 public interface UserMapper extends BaseMapper<User> {
 }

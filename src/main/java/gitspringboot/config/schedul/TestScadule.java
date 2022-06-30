@@ -16,10 +16,10 @@ public class TestScadule {
 
     @Scheduled(cron = "*/5 * * * * ?")
     public void pringData(){
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(StopTask.class);
-        TaskScheduler taskScheduler = ctx.getBean(TaskScheduler.class);
-        System.out.println(taskScheduler);
-//        System.out.println(DateUtil.date() + ":我是秒级定时器");
+//        ApplicationContext ctx = new AnnotationConfigApplicationContext(StopTask.class);
+//        TaskScheduler taskScheduler = ctx.getBean(TaskScheduler.class);
+//        System.out.println(taskScheduler);
+        System.out.println(DateUtil.date() + ":我是秒级定时器");
     }
 
     /**
