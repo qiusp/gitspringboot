@@ -1,12 +1,14 @@
 package gitspringboot.modules.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
 @Data
 @Accessors(chain = true)
-public class TestEntity {
-    String key;
-    String value;
+@AllArgsConstructor
+public class TestStudent {
+    String name;
+    Integer age;
 
 }
