@@ -1,4 +1,4 @@
-package gitspringboot.config.test.fanxing;
+package gitspringboot.config.test.generic;
 
 public class UserInfo<T,O> {
     private T name;
@@ -26,8 +26,4 @@ public class UserInfo<T,O> {
         return (T) (this.name.toString() + this.sex.toString());
     }
 
-    public Class aClass(T t){
-        //获取到T.class
-        return t.getClass();
-    }
 }
