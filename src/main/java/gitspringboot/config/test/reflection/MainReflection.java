@@ -37,6 +37,7 @@ public class MainReflection {
 
 
         System.out.println("----------------------------4、获取所有方法，并使用方法----------------------------");
+        printClassMethid(First.class, first);
 
 
         System.out.println("----------------------------5、获取实例字段方法，并赋值----------------------------");
@@ -127,8 +128,10 @@ public class MainReflection {
         System.out.println(ff.hello("反射方法ff"));
     }
 
-    public static void printClassMethid(Class cls){
-
+    public static void printClassMethid(Class cls, Object first) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        Method method = cls.getMethod("hello",String.class);
+        String msg = (String) method.invoke(first,"我是invoke");
+        System.out.println(msg);
     }
 
 }

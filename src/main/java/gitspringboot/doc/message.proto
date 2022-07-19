@@ -1,0 +1,197 @@
+syntax = "proto3";
+
+package message;
+option java_multiple_files = true;
+option java_package = "org.springblade.common.grpc.message";
+option java_outer_classname = "MessageProto";
+
+
+enum TemplateStatusType {
+  none = 0;
+  init = 1;  // 审批中
+  pass = 2;  // 审批通过
+  deny = 3;  // 审批被拒绝
+  cancel = 4;  // 审批已取消
+  delete = 5;  // 已删除
+}
+
+message Pagination {
+  uint64 pageIndex = 1;  // 分页页数
+  uint64 pageSize = 2;  // 每页数量
+}
+
+message Template {
+  string id = 1;
+  string code = 2; // 模版代码
+  TemplateStatusType status = 3; // 审批状态
+  string name = 4; // 模版名称
+  int64 type = 5; // 模版类型
+  string reason = 6; // 原因
+  string content = 7; // 模版内容
+  int64 createAt = 8; // 创建时间
+  string signName = 9; // 主题
+}
+
+
+// 模版类型
+enum TemplateType {
+  verify_code = 0; // 验证码
+  notify = 1; // 通知
+  promotion = 2; // 推广
+  international_message = 3; // 国际信息
+}
+
+// 模版新增请求
+message AddTemplateReq {
+  TemplateType templateType = 1;  // 模版类型
+  string templateName = 2; // 1~30字符
+  string templateContent = 3;  // 1~500字符内
+  string remark = 4;  // 短信模板申请说明
+  string SignName = 5; // title
+}
+
+// 模版响应请求
+message AddTemplateResp {
+  string templateCode = 1;  // 模版代码
+}
+
+// 发送
+message SendSmsReq {
+  string templateCode = 1;  // 模版代码
+  map<string, string> params = 2;  // 模版参数
+  string mobile = 3;  // 手机号
+}
+
+message SendSmsResp {
+  string code = 1;
+}
+
+message SendEmailReq {
+  string templateCode = 1;  // 模版代码
+  map<string, string> params = 2;  // 模版参数
+  string Email = 3;  // 邮箱
+}
+
+message SendEmailResp {
+  string code = 1;
+}
+
+message ListTemplateReq {
+  Pagination pagination = 1; //
+}
+
+message ListTemplateResp {
+  uint64 total = 1;
+  repeated Template templateList = 2; // 模版列表
+}
+
+message DeleteTemplateReq {
+  string templateCode = 1;  // 模版代码
+}
+
+message DeleteTemplateResp{
+}
+
+message CheckStatusReq {
+  string code = 1;
+}
+
+// 站内信
+// Topic 主题
+message Topic {
+  string id = 1; // 主题Id
+  string name = 2; // 主题名称
+  string link = 3; // 入口关联链接
+  string from = 4; // 发起方
+  string to = 5; // 接收方
+  bool fromMarkRead = 6; // 发起方已读
+  bool toMarkRead = 7; // 接收方已读
+  int64 createdAt = 8; // 创建时间
+}
+
+// Msg 消息
+message Msg {
+  string id = 1;  // 发送消息时忽略字段
+  string topicId = 2; // 所属主题Id
+  string body = 3; // 消息内容
+  string from = 4; // 发起方
+  string to = 5; // 接收方
+  string link = 6;
+  repeated string attachmentLink = 7; // 附件链接
+  bool markRead = 8; // 是否已读
+  int64 createdAt = 9; // 创建时间
+}
+
+// 发送消息
+message SendMsgReq {
+  string topicId = 2; // 所属主题Id
+  string body = 3; // 消息内容
+  string from = 4; // 发起方
+  string to = 5; // 接收方
+  string attachmentLink = 6; // 附件链接
+  string Link = 7; // 入口关联链接
+}
+message SendMsgResp {
+  string msgId = 1;  // 消息Id
+  string topicId = 2;  // 主题Id
+}
+
+// 获取未读消息数量
+message GetUnReadMsgCountReq {
+  string userId = 1;
+}
+message GetUnReadMsgCountResp {
+  uint64 count = 1;
+}
+
+// 获取未读主题数量
+message GetUnReadTopicCountReq {
+  string UserId = 1;
+}
+message GetUnReadTopicCountResp {
+  uint64 count = 1;
+}
+
+// 通过topicId获取消息，并标记已读（消息和主题）
+message FindMessageByTopicReq {
+  string topicId = 1;
+}
+message FindMessageByTopicResp {
+  Topic topic = 1;  // 主题
+  repeated Msg msgList = 2;  // 消息列表
+}
+
+// 按用户获取主题列表
+message FindTopicByUserReq {
+  Pagination pagination = 1;
+  string userId = 2;
+}
+message FindTopicByUserResp {
+  uint64 total = 1;
+  repeated Topic topicList = 2;
+}
+
+enum Status {
+  sending = 0;
+  success = 1;
+  failure = 2;
+}
+
+message CheckStatusResp {
+  Status status = 1;
+  string reason = 2;
+}
+
+service message {
+  rpc SendSms(SendSmsReq) returns (SendSmsResp);  // 发送短信信息 国际区号+号码。无任何前缀默认为国内
+  rpc SendEmail(SendEmailReq) returns (SendEmailResp); // 发送邮箱信息
+  rpc CheckStatus(CheckStatusReq) returns (CheckStatusResp); // 检查发送结果 预留
+  rpc AddTemplate(AddTemplateReq) returns (AddTemplateResp);  // 创建模版
+  rpc ListTemplate(ListTemplateReq) returns (ListTemplateResp); // 列出所有短信模版
+  rpc DeleteTemplate(DeleteTemplateReq) returns (DeleteTemplateResp); // 删除模版
+  rpc SendMsg(SendMsgReq) returns (SendMsgResp); // 发送站内信
+  rpc FindMessageByTopic(FindMessageByTopicReq) returns (FindMessageByTopicResp); // 通过主题获取主题下的消息（并标记已读）
+  rpc FindTopicByUser(FindTopicByUserReq) returns (FindTopicByUserResp); // 通过用户查找主题
+  rpc GetUnReadTopicCount(GetUnReadTopicCountReq) returns (GetUnReadTopicCountResp); // 获取主题的未读数量
+  rpc GetUnReadMsgCount(GetUnReadMsgCountReq) returns (GetUnReadMsgCountResp);  // 获取未读消息数量
+}

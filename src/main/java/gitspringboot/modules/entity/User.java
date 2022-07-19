@@ -7,11 +7,12 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
+import java.io.Serializable;
+
 @Data
 @Accessors(chain = true)
 @TableName("user")
-public class User {
-    private static final long serialVersionUID = 1L;
+public class User implements Serializable{
 
     /**
      * 主键
@@ -30,5 +31,9 @@ public class User {
      */
     @TableField(value = "pass_word")
     private String passWord;
+
+    public void test(){
+        System.out.println("父类的方法");
+    }
 
 }

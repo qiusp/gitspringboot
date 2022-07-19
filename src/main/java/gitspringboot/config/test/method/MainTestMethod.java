@@ -1,6 +1,13 @@
 package gitspringboot.config.test.method;
 
 
+import gitspringboot.modules.entity.User;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MainTestMethod {
 
     public static void main(String[] args){
@@ -19,6 +26,32 @@ public class MainTestMethod {
         classExtends.extendsMethod();
         classExtends.finalMethod();
         classExtends.finalMethod("2");
+
+        System.out.println("----------------------------new-------------------------------");
+        //如果需要一个只用一次的类，可以省去再写一个子类的方式
+        User user = new User(){
+            @Override
+            public void test() {
+                super.test();
+                System.out.println("子类的方法");
+            }
+
+        };
+        user.test();
+
+        Map<String, String> map = new HashMap<String,String>(){
+            {
+                put("name","qsp");
+                put("name","qqq");
+            }
+        };
+
+        List<Integer> list = new ArrayList<Integer>(){
+            {
+                add(1);
+                add(2);
+            }
+        };
 
     }
 }
