@@ -37,7 +37,7 @@ public class MainReflection {
 
 
         System.out.println("----------------------------4、获取所有方法，并使用方法----------------------------");
-        printClassMethid(First.class, first);
+        printClassMethod(First.class, first);
 
 
         System.out.println("----------------------------5、获取实例字段方法，并赋值----------------------------");
@@ -72,7 +72,6 @@ public class MainReflection {
      */
     public static void printClassField(Class cls, Object first) throws NoSuchFieldException, IllegalAccessException {
 
-
 /**
  *      1、f.get(first)会得到一个IllegalAccessException，这是因为name被定义为一个private字段，
        正常情况下，Main类无法访问Person类的private字段。
@@ -106,20 +105,30 @@ public class MainReflection {
 
     }
 
-
+    /**
+     * 获取构造方法
+     * @param cls
+     * @throws NoSuchFieldException
+     * @throws IllegalAccessException
+     * @throws InstantiationException
+     * @throws NoSuchMethodException
+     * @throws InvocationTargetException
+     */
     public static void printClassConstructor(Class cls) throws NoSuchFieldException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         Constructor[] conArray = cls.getDeclaredConstructors();
         for(Constructor c : conArray){
             System.out.println(c);
         }
 
-        System.out.println("实例化无参构造函数");
+        System.out.println("newInstance：实例化无参构造函数");
         First f = (First) cls.newInstance();
         f.setAge(15);
         f.name = "f";
+        Method method = cls.getMethod("hello",String.class);
+        method.invoke(f,"我是invoke");
         System.out.println(f.name + ":" + f.getAge());
 
-        System.out.println("实例化有参构造函数");
+        System.out.println("getConstructor：实例化有参构造函数");
         Constructor c = cls.getConstructor(String.class, Integer.class);
         System.out.println(f.hello("反射方法f"));
 
@@ -128,7 +137,7 @@ public class MainReflection {
         System.out.println(ff.hello("反射方法ff"));
     }
 
-    public static void printClassMethid(Class cls, Object first) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+    public static void printClassMethod(Class cls, Object first) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = cls.getMethod("hello",String.class);
         String msg = (String) method.invoke(first,"我是invoke");
         System.out.println(msg);

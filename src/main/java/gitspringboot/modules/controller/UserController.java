@@ -16,8 +16,8 @@ public class UserController {
     @Resource
     IUserService userService;
 
-    @PostMapping(value = "/user")
-    public IPage<User> test(Page<User> page){
+    @PostMapping(value = "/userpage")
+    public IPage<User> test(@RequestBody Page<User> page){
         return userService.test(page);
     }
 

@@ -1,4 +1,4 @@
-package gitspringboot.modules.service.impl;
+package gitspringboot.modules.service.Impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -24,6 +24,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     public IPage<User> test(Page<User> page) {
         LambdaQueryWrapper<User> queryWrapper = Wrappers.<User>query().lambda();
         queryWrapper.eq(User::getUserName,"qsp");
+
         List<User> userList= this.list();
 
         page = new Page<>(1,userList.size(),userList.size(),true);

@@ -1,4 +1,4 @@
-package gitspringboot.modules.service.impl;
+package gitspringboot.config.Grpc;
 
 import io.grpc.CallCredentials;
 import io.grpc.Metadata;

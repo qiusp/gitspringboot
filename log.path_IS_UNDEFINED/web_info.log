@@ -1,0 +1,47 @@
+2022-07-23 16:52:51.852 [main] INFO  gitspringboot.GitspringbootApplication - Starting GitspringbootApplication using Java 1.8.0_333 on DESKTOP-TGF2CMS with PID 9004 (E:\gitspringboot\target\classes started by Administrator in E:\gitspringboot)
+2022-07-23 16:52:51.855 [main] INFO  gitspringboot.GitspringbootApplication - The following 1 profile is active: "spring.profiles.active=dev"
+2022-07-23 16:52:52.937 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-07-23 16:52:52.945 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-07-23 16:52:52.945 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-23 16:52:52.946 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-23 16:52:53.137 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-23 16:52:53.138 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1240 ms
+2022-07-23 16:52:54.469 [main] INFO  n.d.b.g.c.a.GrpcClientAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyChannelFactory + InProcessChannelFactory
+2022-07-23 16:52:55.202 [main] INFO  n.d.b.g.c.a.GrpcClientSecurityAutoConfiguration - Found single CallCredentials in the context, automatically using it for all stubs
+2022-07-23 16:52:55.643 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-07-23 16:52:55.656 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-07-23 16:52:55.665 [main] INFO  gitspringboot.GitspringbootApplication - Started GitspringbootApplication in 4.214 seconds (JVM running for 5.381)
+2022-07-23 16:54:57.730 [main] INFO  gitspringboot.GitspringbootApplication - Starting GitspringbootApplication using Java 1.8.0_333 on DESKTOP-TGF2CMS with PID 20384 (E:\gitspringboot\target\classes started by Administrator in E:\gitspringboot)
+2022-07-23 16:54:57.734 [main] INFO  gitspringboot.GitspringbootApplication - The following 1 profile is active: "spring.profiles.active=dev"
+2022-07-23 16:54:58.898 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-07-23 16:54:58.906 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-07-23 16:54:58.907 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-23 16:54:58.907 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-23 16:54:59.082 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-23 16:54:59.082 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1292 ms
+2022-07-23 16:55:00.197 [main] INFO  n.d.b.g.c.a.GrpcClientAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyChannelFactory + InProcessChannelFactory
+2022-07-23 16:55:00.997 [main] INFO  n.d.b.g.c.a.GrpcClientSecurityAutoConfiguration - Found single CallCredentials in the context, automatically using it for all stubs
+2022-07-23 16:55:01.461 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-07-23 16:55:01.474 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-07-23 16:55:01.484 [main] INFO  gitspringboot.GitspringbootApplication - Started GitspringbootApplication in 4.243 seconds (JVM running for 5.542)
+2022-07-23 16:55:20.228 [http-nio-8083-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-23 16:55:20.229 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-07-23 16:55:20.230 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-07-23 16:55:20.276 [http-nio-8083-exec-1] INFO  g.modules.service.impl.SpringbootSlf4jImpl - 控制台输出日志
+2022-07-23 17:01:03.133 [main] INFO  gitspringboot.GitspringbootApplication - Starting GitspringbootApplication using Java 1.8.0_333 on DESKTOP-TGF2CMS with PID 17196 (E:\gitspringboot\target\classes started by Administrator in E:\gitspringboot)
+2022-07-23 17:01:03.136 [main] INFO  gitspringboot.GitspringbootApplication - The following 1 profile is active: "spring.profiles.active=dev"
+2022-07-23 17:01:04.214 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat initialized with port(s): 8083 (http)
+2022-07-23 17:01:04.224 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8083"]
+2022-07-23 17:01:04.225 [main] INFO  org.apache.catalina.core.StandardService - Starting service [Tomcat]
+2022-07-23 17:01:04.225 [main] INFO  org.apache.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-07-23 17:01:04.414 [main] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2022-07-23 17:01:04.415 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1239 ms
+2022-07-23 17:01:05.875 [main] INFO  n.d.b.g.c.a.GrpcClientAutoConfiguration - Detected grpc-netty-shaded: Creating ShadedNettyChannelFactory + InProcessChannelFactory
+2022-07-23 17:01:06.742 [main] INFO  n.d.b.g.c.a.GrpcClientSecurityAutoConfiguration - Found single CallCredentials in the context, automatically using it for all stubs
+2022-07-23 17:01:07.615 [main] INFO  org.apache.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8083"]
+2022-07-23 17:01:07.627 [main] INFO  o.s.boot.web.embedded.tomcat.TomcatWebServer - Tomcat started on port(s): 8083 (http) with context path ''
+2022-07-23 17:01:07.648 [main] INFO  gitspringboot.GitspringbootApplication - Started GitspringbootApplication in 4.887 seconds (JVM running for 6.05)
+2022-07-23 17:01:25.504 [http-nio-8083-exec-1] INFO  o.a.c.core.ContainerBase.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-07-23 17:01:25.505 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2022-07-23 17:01:25.506 [http-nio-8083-exec-1] INFO  org.springframework.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2022-07-23 17:01:25.540 [http-nio-8083-exec-1] INFO  g.modules.service.Impl.SpringbootSlf4jImpl - 控制台输出日志

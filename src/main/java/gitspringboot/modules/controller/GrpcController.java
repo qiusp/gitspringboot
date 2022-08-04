@@ -1,9 +1,7 @@
 package gitspringboot.modules.controller;
 
-import gitspringboot.modules.service.IGrpcService;
-import org.springframework.beans.factory.annotation.Autowired;
+import gitspringboot.config.Grpc.GrpcServiceImpl;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,7 +12,7 @@ import javax.net.ssl.SSLException;
 @RequestMapping("/grpc")
 public class GrpcController {
     @Resource
-    private IGrpcService grpcService;
+    private GrpcServiceImpl grpcService;
 
     @GetMapping("/getMsgCount")
     public void getMsgCount() {
