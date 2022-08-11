@@ -1,6 +1,7 @@
 server:
   port: 8083
 
+#为什么一定要有连接池
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -17,7 +18,14 @@ spring:
     port: 6379
 #数据库索引（0到16）
     database: 1
+#    redis默认使用lettuce，此时连接池如果没有加上pom配置不生效
+    lettuce:
+      pool:
+        max-idle: 16
+        max-active:32
+        min-idle: 8
+#    连接池最大连接数（使用负值表示没有限制）jedis和lettuce的区别
 
 mybatis-plus:
-  mapper-locations: classpath:gitspringboot.modules.mapper*
+  mapper-locations: classpath:gitspringboot.modules.mapper
 

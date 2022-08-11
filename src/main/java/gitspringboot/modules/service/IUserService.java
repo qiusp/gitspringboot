@@ -9,6 +9,14 @@ public interface IUserService extends IService<User> {
 
     IPage<User> test(Page<User> page);
 
-    boolean addUser(User user);
+    User addUser(User user);
+
+    boolean addUser1(User user);
+
+    User getDataById(int id);
+
+    Boolean updateContentById(String contetnt, Long id);
+
+    User userlogin();
 
 }

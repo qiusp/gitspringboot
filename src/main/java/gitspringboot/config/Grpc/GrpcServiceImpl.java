@@ -1,23 +1,13 @@
 package gitspringboot.config.Grpc;
 
 
-import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import gitspringboot.modules.entity.User;
-import gitspringboot.modules.mapper.UserMapper;
-import gitspringboot.modules.message.*;
+import gitspringboot.config.Grpc.message.*;
 import io.grpc.*;
-import io.grpc.netty.shaded.io.grpc.netty.GrpcSslContexts;
-import io.grpc.netty.shaded.io.grpc.netty.NegotiationType;
-import io.grpc.netty.shaded.io.grpc.netty.NettyChannelBuilder;
-import io.grpc.netty.shaded.io.netty.handler.ssl.SslContext;
-import io.grpc.netty.shaded.io.netty.handler.ssl.SslContextBuilder;
 import lombok.extern.slf4j.Slf4j;
 import net.devh.boot.grpc.client.inject.GrpcClient;
 import org.springframework.stereotype.Service;
 
 import javax.net.ssl.SSLException;
-import java.io.File;
-import java.util.concurrent.Executor;
 
 
 @Service

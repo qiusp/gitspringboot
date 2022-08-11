@@ -4,6 +4,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import gitspringboot.config.util.R;
 import gitspringboot.modules.entity.User;
+import gitspringboot.modules.model.LoginInfo;
 import gitspringboot.modules.service.IUserService;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,10 +22,32 @@ public class UserController {
         return userService.test(page);
     }
 
-    @PostMapping (value = "/adduser")
-    public R test(@RequestBody User user){
-        return R.ok(userService.addUser(user));
+    @PostMapping(value = "/userlogin")
+    public R<User> userlogin(@RequestBody LoginInfo loginInfo){
+        User user = userService.userlogin();
+        return R.ok(user);
     }
 
+    @PostMapping (value = "/adduser")
+    public R addUser(@RequestBody User user){
+        User resule = userService.addUser(user);
+        return R.ok(resule);
+    }
 
+    @GetMapping (value = "/addUser1")
+    public R<Boolean> addUser1(@RequestBody User user){
+        Boolean u = userService.addUser1(user);
+        return R.ok(u);
+    }
+    @GetMapping (value = "/getDataById")
+    public R<User> getDataById(@RequestParam("id") int id){
+        User user = userService.getDataById(id);
+        return R.ok(user);
+    }
+
+    @GetMapping (value = "/updateDataById")
+    public R<Boolean> updateDataById(@RequestParam("id") Long id, @RequestParam("id") String content){
+        Boolean user = userService.updateContentById(content,id);
+        return R.ok(user);
+    }
 }
