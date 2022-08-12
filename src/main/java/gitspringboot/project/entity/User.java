@@ -1,4 +1,4 @@
-package gitspringboot.modules.entity;
+package gitspringboot.project.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
@@ -31,8 +31,6 @@ public class User implements Serializable{
      */
     @TableField(value = "pass_word")
     private String passWord;
-
-    private String token;
 
     public void test(){
         System.out.println("父类的方法");

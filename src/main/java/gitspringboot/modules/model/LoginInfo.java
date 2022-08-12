@@ -12,7 +12,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class LoginInfo {
 
-
 	private String password;
 
 	private String username;

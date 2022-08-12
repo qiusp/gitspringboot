@@ -5,7 +5,9 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
+import com.google.protobuf.ServiceException;
 import gitspringboot.config.util.RedisUtils;
+import gitspringboot.modules.model.LoginInfo;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,14 +83,17 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
     }
 
     @Override
-    public User userlogin() {
-        List<User> userList= this.list();
+    public String userlogin(LoginInfo loginInfo) throws ServiceException {
+        LambdaQueryWrapper<User> queryWrapper = Wrappers.lambdaQuery();
+        queryWrapper.eq(User::getUserName,loginInfo.getUsername());
+        queryWrapper.eq(User::getPassWord,loginInfo.getPassword());
+        List<User> userList= this.list(queryWrapper);
         User user = new User();
         if (userList.size() > 0){
-            user = userList.get(0);
+
+        }else{
+            return "登录失败";
         }
-        return user;
+        return "登录成功";
     }
-
-
 }

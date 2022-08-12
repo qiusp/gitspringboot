@@ -2,6 +2,7 @@ package gitspringboot.modules.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.google.protobuf.ServiceException;
 import gitspringboot.config.util.R;
 import gitspringboot.modules.entity.User;
 import gitspringboot.modules.model.LoginInfo;
@@ -23,8 +24,8 @@ public class UserController {
     }
 
     @PostMapping(value = "/userlogin")
-    public R<User> userlogin(@RequestBody LoginInfo loginInfo){
-        User user = userService.userlogin();
+    public R<String> userlogin(@RequestBody LoginInfo loginInfo) throws ServiceException {
+        String user = userService.userlogin(loginInfo);
         return R.ok(user);
     }
 

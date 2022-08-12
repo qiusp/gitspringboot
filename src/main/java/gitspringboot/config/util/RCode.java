@@ -1,14 +1,16 @@
 package gitspringboot.config.util;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-
+@Getter
+@AllArgsConstructor
 public enum RCode {
     /**操作成功**/
     RC100(100,"操作成功"),
     /**操作失败**/
     RC999(999,"操作失败"),
     /**服务限流**/
-    RC200(200,"服务开启限流保护,请稍后再试!"),
+    RC200(200,"服务正常!"),
     /**服务降级**/
     RC201(201,"服务开启降级保护,请稍后再试!"),
     /**热点参数限流**/
@@ -31,24 +33,22 @@ public enum RCode {
     UNSUPPORTED_GRANT_TYPE(1003, "不支持的认证模式");
 
     /**自定义状态码**/
-    @Getter
     private int code;
 
     /**
      * 携 带 消 息
      */
-    @Getter
     private String message;
-    /**
-     * 构 造 方 法
-     */
-    RCode(int code, String message) {
 
-        this.code = code;
+    ///**
+    // * 构 造 方 法
+    // */
+    //RCode(int code, String message) {
+    //
+    //    this.code = code;
+    //
+    //    this.message = message;
+    //}
 
-        this.message = message;
-    }
 
-    RCode() {
-    }
 }

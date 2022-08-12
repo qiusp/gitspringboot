@@ -63,7 +63,7 @@ public class R<T> implements Serializable {
      * 成 功 操 作, 携 带 消 息 和 携 带 数 据
      */
     public static <T> R<T> ok(String message, T data) {
-        return ok(RCode.RC100.getCode(), message, data);
+        return ok(RCode.RC200.getCode(), message, data);
     }
 
     /**

@@ -3,7 +3,9 @@ package gitspringboot.modules.service;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.google.protobuf.ServiceException;
 import gitspringboot.modules.entity.User;
+import gitspringboot.modules.model.LoginInfo;
 
 public interface IUserService extends IService<User> {
 
@@ -17,6 +19,6 @@ public interface IUserService extends IService<User> {
 
     Boolean updateContentById(String contetnt, Long id);
 
-    User userlogin();
+    String userlogin(LoginInfo loginInfo) throws ServiceException;
 
 }
