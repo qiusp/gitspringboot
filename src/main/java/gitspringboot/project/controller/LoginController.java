@@ -11,7 +11,7 @@ import gitspringboot.project.service.IUserLoginService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
-import java.util.HashMap;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController//RestController是做rest服务的，以json方式返回数据。RequestMapping 路径映射配置。
 @RequestMapping("/login")
@@ -19,18 +19,13 @@ public class LoginController {
     @Resource
     IUserLoginService userLoginService;
 
-    @PassToken
     @PostMapping(value = "/userlogin")
-    public R<User> userlogin(@RequestBody LoginInfo loginInfo) throws JsonProcessingException {
+    public R<User> userlogin(@RequestBody LoginInfo loginInfo, HttpServletResponse response) {
         User user = userLoginService.userlogin(loginInfo);
         if(user != null){
             String token = JtwUtils.createToken(loginInfo);
-            HashMap<String,Object> hs=new HashMap<>();
-            hs.put("token",token);
-
-            ObjectMapper objectMapper=new ObjectMapper();
-            String tokenResult = objectMapper.writeValueAsString(hs);
-
+            //设置首次登录respone
+            response.setHeader("Authorization",token);
             user.setToken(token);
             return R.ok(user);
         }

@@ -7,6 +7,6 @@ import gitspringboot.modules.model.LoginInfo;
 
 public interface IUserLoginService extends IService<User> {
 
-    User userlogin(LoginInfo loginInfo) throws JsonProcessingException;
+    User userlogin(LoginInfo loginInfo);
 
 }

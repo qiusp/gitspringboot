@@ -32,6 +32,7 @@ public class User implements Serializable{
     @TableField(value = "pass_word")
     private String passWord;
 
+    @TableField(exist = false)
     private String token;
 
     public void test(){

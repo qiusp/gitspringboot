@@ -89,9 +89,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         queryWrapper.eq(User::getPassWord,loginInfo.getPassword());
         List<User> userList= this.list(queryWrapper);
         User user = new User();
-        if (userList.size() > 0){
-
-        }else{
+        if (userList.size() == 0) {
             return "登录失败";
         }
         return "登录成功";

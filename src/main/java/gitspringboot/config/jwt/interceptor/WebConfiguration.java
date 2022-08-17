@@ -1,5 +1,6 @@
-package gitspringboot.config.jwt;
+package gitspringboot.config.jwt.interceptor;
 
+import gitspringboot.config.jwt.interceptor.JwtInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -31,6 +32,9 @@ public class WebConfiguration implements WebMvcConfigurer {
         registry.addMapping("/**")
                 // 设置允许跨域请求的域名
                 .allowedOriginPatterns("*")
+                //响应头部
+                .exposedHeaders("Authorization")
+                .allowedHeaders("*")
                 // 设置允许的方法
                 .allowedMethods("*")
                 // 是否允许证书（cookies）
@@ -38,8 +42,6 @@ public class WebConfiguration implements WebMvcConfigurer {
                 // 跨域允许时间
                 .maxAge(3600);
     }
-
-
 
     /**
      * 配置拦截器、拦截路径
@@ -59,6 +61,7 @@ public class WebConfiguration implements WebMvcConfigurer {
         excludePath.add("/assets/**");
         //静态资源
         registry.addInterceptor(tokenInterceptor)
+                //用于添加拦截规则
                 .addPathPatterns("/**")
                 .excludePathPatterns(excludePath);
         WebMvcConfigurer.super.addInterceptors(registry);
