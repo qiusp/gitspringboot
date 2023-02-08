@@ -1,6 +1,6 @@
 package gitspringboot.config.annotation;
 
-import gitspringboot.modules.entity.User;
+import gitspringboot.modules.firstModule.firstmodule.entity.User;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration

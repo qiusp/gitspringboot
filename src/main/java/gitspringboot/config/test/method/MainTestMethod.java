@@ -1,7 +1,7 @@
 package gitspringboot.config.test.method;
 
 
-import gitspringboot.modules.entity.User;
+import gitspringboot.modules.firstModule.firstmodule.entity.User;
 
 import java.util.ArrayList;
 import java.util.HashMap;

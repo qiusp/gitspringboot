@@ -26,8 +26,6 @@ public class GrpcServiceImpl {
     public void getMsgCount() {
 
         GetUnReadMsgCountReq build = GetUnReadMsgCountReq.newBuilder().setUserId("2").build();
-        //messageGrpc.messageBlockingStub stu = messageBlockingStub.withCallCredentials(myCredentials);
-        //GetUnReadMsgCountResp resp = stu.getUnReadMsgCount(build);
         GetUnReadMsgCountResp resp = messageBlockingStub.withCallCredentials(myCredentials).getUnReadMsgCount(build);
         System.out.println(resp.getCount());
 

@@ -1,6 +1,6 @@
 package gitspringboot.config.test.testannotation;
 
-import gitspringboot.modules.entity.TestStudent;
+import gitspringboot.modules.firstModule.firstmodule.entity.TestStudent;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

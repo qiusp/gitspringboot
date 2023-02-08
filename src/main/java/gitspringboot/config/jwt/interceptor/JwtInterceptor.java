@@ -2,7 +2,10 @@ package gitspringboot.config.jwt.interceptor;
 
 import cn.hutool.json.JSONObject;
 import com.alibaba.fastjson.JSON;
+import gitspringboot.config.Redis.RedisUtils;
 import gitspringboot.config.jwt.JtwUtils;
+import gitspringboot.modules.firstModule.firstmodule.entity.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
@@ -27,9 +30,12 @@ import java.io.PrintWriter;
  */
 @Component
 public class JwtInterceptor implements HandlerInterceptor {
+    @Autowired
+    private RedisUtils redisUtils;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)throws Exception{
+
         //第一次请求的方法为"OPTIONS"，具体可以看TCP/IP协议
         // 这里是个坑，因为带请求带headers时，ajax会发送两次请求，
         // 第一次会发送OPTIONS请求，第二次才会发生get/post请求，所以要放行OPTIONS请求
@@ -38,6 +44,8 @@ public class JwtInterceptor implements HandlerInterceptor {
         String options= HttpMethod.OPTIONS.toString();
         if(request.getMethod().equals(options)){
             response.setStatus(HttpServletResponse.SC_OK);
+            //登陆时判断redis是否有过期token,有的话清除
+
             return true;
         }
 
@@ -47,6 +55,24 @@ public class JwtInterceptor implements HandlerInterceptor {
         if(token != null){
             //验证token
             boolean result = JtwUtils.verifyToken(token);
+            if(!result){
+                //Token过期处理
+                User userInfo = (User)redisUtils.get(token);
+                String newToken = JtwUtils.createToken(userInfo);
+                response.setHeader("Authorization",newToken);
+                if (!token.equals(newToken)){
+                    redisUtils.del(token);
+                    redisUtils.set(newToken, userInfo);
+                }else {
+                    System.out.println("redis不变");
+                }
+
+                //JSONObject json = new JSONObject();
+                //json.put("msg","token自动续期");
+                //json.put("code","300");
+                //PrintWriter append = response.getWriter().append(JSON.toJSONString(json));
+                return true;
+            }
             if(result){
                 return true;
             }

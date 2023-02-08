@@ -1,9 +1,8 @@
 package gitspringboot.project.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import gitspringboot.modules.entity.User;
-import gitspringboot.modules.model.LoginInfo;
+import gitspringboot.modules.firstModule.firstmodule.entity.User;
+import gitspringboot.modules.firstModule.firstmodule.model.LoginInfo;
 
 public interface IUserLoginService extends IService<User> {
 

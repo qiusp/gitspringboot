@@ -1,13 +1,12 @@
 package gitspringboot.project.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import gitspringboot.config.Redis.RedisUtils;
 import gitspringboot.config.jwt.JtwUtils;
-import gitspringboot.config.jwt.PassToken;
 import gitspringboot.config.util.R;
-import gitspringboot.modules.entity.User;
-import gitspringboot.modules.model.LoginInfo;
+import gitspringboot.modules.firstModule.firstmodule.entity.User;
+import gitspringboot.modules.firstModule.firstmodule.model.LoginInfo;
 import gitspringboot.project.service.IUserLoginService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -17,16 +16,19 @@ import javax.servlet.http.HttpServletResponse;
 @RequestMapping("/login")
 public class LoginController {
     @Resource
-    IUserLoginService userLoginService;
+    private IUserLoginService userLoginService;
 
+    @Autowired
+    private RedisUtils redisUtils;
     @PostMapping(value = "/userlogin")
     public R<User> userlogin(@RequestBody LoginInfo loginInfo, HttpServletResponse response) {
         User user = userLoginService.userlogin(loginInfo);
         if(user != null){
-            String token = JtwUtils.createToken(loginInfo);
-            //设置首次登录respone
+            String token = JtwUtils.createToken(user);
+            //设置首次登录respone头部
             response.setHeader("Authorization",token);
-            user.setToken(token);
+            //缓存当前用户token
+            redisUtils.set(token, user);
             return R.ok(user);
         }
         else {
