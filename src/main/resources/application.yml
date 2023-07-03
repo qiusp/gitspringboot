@@ -10,6 +10,12 @@ spring:
   messages:
     basename: i18n/messages
     encoding: UTF-8
+  servlet:
+    multipart:
+      # 上传文件总的最大值
+      max-request-size: 10MB
+      # 单个文件的最大值
+      max-file-size: 10MB
 
 mybatis:
 mybatis-plus:
@@ -36,3 +42,4 @@ grpc:
       # 明文通信且http/2 | 明文通信且升级http/1.1为http/2 | 使用TLS（ALPN/NPN）通信
       negotiationType: plaintext
     # 审批服务（不同服务名可对应不同配置）
+

@@ -1,13 +1,16 @@
 package gitspringboot;
 
-import gitspringboot.modules.firstModule.firstmodule.service.IUserService;
+import gitspringboot.modules.firstModule.service.IUserService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+
+import javax.annotation.Resource;
 
 @SpringBootTest
 class GitspringbootApplicationTests {
 
-    IUserService userService;
+    @Resource
+    private IUserService userService;
 
     @Test
     void user() {

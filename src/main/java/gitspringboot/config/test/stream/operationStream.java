@@ -4,7 +4,7 @@ package gitspringboot.config.test.stream;
 //而是创建一个新的流，当遍历该流时，它包含与给定谓词匹配的原始流的元素。因此在执行终端操作之前，流的遍历不会开始。
 //这是非常重要的特性，对于无限流尤其重要——因为它允许我们创建只有在调用终端操作时才实际调用的流
 
-import gitspringboot.modules.firstModule.firstmodule.entity.User;
+import gitspringboot.modules.firstModule.entity.User;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -6,7 +6,7 @@ package gitspringboot.config.test.reflection;
 // 会在程序的运行期间进行类的加载。如下图所示，反射需要自己去构建Class、创建构造函数和通过构造函数创建对象。
 
 
-import gitspringboot.modules.firstModule.firstmodule.entity.User;
+import gitspringboot.modules.firstModule.entity.User;
 
 import java.lang.reflect.*;
 

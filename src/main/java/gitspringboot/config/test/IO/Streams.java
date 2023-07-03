@@ -1,6 +1,6 @@
 package gitspringboot.config.test.IO;
 
-import gitspringboot.modules.firstModule.firstmodule.entity.User;
+import gitspringboot.modules.firstModule.entity.User;
 
 import java.io.*;
 
